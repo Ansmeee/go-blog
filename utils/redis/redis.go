@@ -10,7 +10,7 @@ import (
 func Connect() *redis.Client {
 	host := config.Get("redis.host")
 	port := config.Get("redis.port")
-	password := config.Get("redis.password")
+	pswd := config.Get("redis.password")
 
 	if host == "" || port == "" {
 		log.Println("can not connect to redis, config error")
@@ -20,7 +20,7 @@ func Connect() *redis.Client {
 	addr := fmt.Sprintf("%s:%s", host, port)
 	return redis.NewClient(&redis.Options{
 		Addr:     addr,
-		Password: password,
+		Password: pswd,
 		DB:       0,
 	})
 }
